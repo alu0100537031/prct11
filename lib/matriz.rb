@@ -30,6 +30,16 @@ class Matriz
   end
 end
 
+# ===Clase MatrizDensa
+#
+#   Es una clase hija de la clase base matriz ,en ella se implementan los principales métodos para operar con matrices.
+#   Los métodos que forman dicha clase son :
+#       to_s: Método que imprime por patalla la matriz como una cadena 
+#       +(other): Metodo que permite sumar dos matrices y devuelve un objeto de tipo matriz densa.
+#       -(other): Metodo que permite sumar dos matrices y devuelve un objeto de tipo matriz densa.
+#       *(other): Permite multiplicar dos matrices y devuelve un objeto de tioo matriz densa.
+#       max: Devuelve el mayor elemento de la matriz.
+#       min :Devuelve el menor elemento de la matriz.
 
 
 class MatrizDensa < Matriz
@@ -54,7 +64,7 @@ class MatrizDensa < Matriz
       return mat[i][j] = k
    end
   
-
+# metodo que imprime por pantalla la matriz
   def to_s
      cad = " "
     for i in 0...nfil
@@ -110,6 +120,8 @@ class MatrizDensa < Matriz
     end
     return MatrizDensa.new(self.nfil,other.ncol,m)  
   end
+
+   # metodo que calcula el mayor elemento de la matriz
   
   def max
     max=mat[0][0] # Maximo toma como valor inicial el primer elemento de la matriz	
@@ -123,7 +135,7 @@ class MatrizDensa < Matriz
     return max  
   end
   
-      
+  # metodo que calcula el menor elemento de la matriz      
   
   def min
       min=mat[0][0] # Minimo toma como valor inicial el primer elemento de la matriz
@@ -140,11 +152,24 @@ end
 
 
       
-
+# ==Clase MatrizDispersa
+#
+#   Es la otra clase hija de la clase base matriz ,en donde el 60 % de elementos de la matriz son nulos.
+#   Para ello utilizamos un hash en donde almacenamos los elementos no nulos. Al igual que la matriz densa tambien
+#   se implementan los principales métodos para operar con matrices.
+#   Los métodos que forman dicha clase son :
+#       to_s: Método que imprime por patalla el hash 
+#       +(other): Metodo que permite sumar dos matrices y devuelve un objeto de tipo matriz densa o un objeto de tipo matriz dispersa.
+#       -(other): Metodo que permite restar dos matrices y devuelve un objeto de tipo matriz densa o un objeto de tipo matriz dispersa..
+#       *(other): Permite multiplicar dos matrices y devuelve un objeto de tipo matriz densa.
+#       max: Devuelve el mayor elemento de la matriz.
+#       min :Devuelve el menor elemento de la matriz.
 
 class MatrizDispersa < Matriz
   
   attr_reader:hash , :mat
+ 
+  # metodo que inicializa los valores de la matriz y almacena en un hash los elementos no nulos
   
   def initialize (nfil, ncol, mat)
     super(nfil, ncol)
@@ -181,6 +206,8 @@ class MatrizDispersa < Matriz
       end
  end
  
+ # metodo que imprime por pantalla el hash
+ 
   def to_s
     if (hash.values != nil)
       cad = ""
@@ -191,6 +218,8 @@ class MatrizDispersa < Matriz
     end 
     #return hash
   end 
+
+  # metodo que suma dos matrices (Sobrecarga del operador +)
 
   def +(other)
       
@@ -209,6 +238,8 @@ class MatrizDispersa < Matriz
       
   end
   
+  # metodo que resta dos matrices (Sobrecarga del operador -)
+  
    def -(other)
        case other
           when MatrizDensa
@@ -223,6 +254,8 @@ class MatrizDispersa < Matriz
        end
       
   end
+ 
+ # metodo que calcula el mayor elemento de la matriz
   
   def max
     max = hash.values[0] # max toma el primer valor del hash
@@ -233,7 +266,9 @@ class MatrizDispersa < Matriz
     end
    return max 
    end
-  
+   
+ # metodo que calcula el menor elemento de la matriz
+   
   def min
     min = hash.values[0] # min toma el primer valor del hash	
     hash.each do |clave,valor|
