@@ -1,4 +1,22 @@
-# Clase Base Matriz
+# == Fichero que contiene la gema para el trabajo con matrices.
+# Operacion con matrices densas y dispersas.
+# Autores: Rushil Lakhani Lakhani, Waldo Nazco Torres
+# Github: alu0100537031@ull.edu.es, alu0100537185@ull.edu.es
+
+#
+# Para realizacion de esta practica se ha creado una jerarquia de clases. 
+# Partiendo de la clase abstracta matriz, que es heredada por las clases hijas (Matriz Dispersa) y (Matriz Densa). En dichas clases hijas se 
+# encuentran los metodos implementados que constituyen las operaciones basicas con matrices (+,-,*). 
+
+# == Construcción de una gema.
+#  Se pretende construir una gema que contenga los principales métodos para matrices densas y dispersas siguiendo la filosofía de la programación funcional.
+#  Utilización de la gema Rdoc para generar documentación.
+
+
+# === Clase Matriz
+#
+#   Es la clase base , consiste en una clase abstacta cuya funcion es que sea heredada por sus clases hijas (Matriz Dispersa y Matriz Densa)
+
 class Matriz
   require "./lib/racional.rb"
 
