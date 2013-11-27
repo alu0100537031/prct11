@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body>
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_md.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Fraccion.html">Fraccion</a>
+  
+    <li><a href="./GemaMatriz.html">GemaMatriz</a>
+  
+    <li><a href="./Matriz.html">Matriz</a>
+  
+    <li><a href="./MatrizDensa.html">MatrizDensa</a>
+  
+    <li><a href="./MatrizDispersa.html">MatrizDispersa</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+
+<h1 id="label-Pr%C3%A1ctica+de+Laboratorio+%239.+Creacion+De+Una+Gema">Práctica de Laboratorio #9. Creacion De Una Gema<span><a href="#label-Pr%C3%A1ctica+de+Laboratorio+%239.+Creacion+De+Una+Gema">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<h2 id="label-Componentes+Del+Grupo%3A">Componentes Del Grupo:<span><a href="#label-Componentes+Del+Grupo%3A">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<ul><li>
+<p>RUSHIL LAKHANI LAKHANI</p>
+</li><li>
+<p>WALDO NAZCO TORRES</p>
+</li></ul>
+
+<h2 id="label-GemaMatriz"><a href="GemaMatriz.html">GemaMatriz</a><span><a href="#label-GemaMatriz">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>Construcción de una gema ruby para la creación de matrices dispersas y
+densas,que heredan de la clase base <a href="Matriz.html">Matriz</a></p>
+
+<h2 id="label-Descripci%C3%B3n+de+la+pr%C3%A1ctica.">Descripción de la práctica.<span><a href="#label-Descripci%C3%B3n+de+la+pr%C3%A1ctica.">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>La práctica consiste en crear una clase abstracta llamada <a
+href="Matriz.html">Matriz</a>, donde pondremos los distintos métodos
+abstractos de la clase<br>
+Para ello partimos de la clase base <a
+href="Matriz.html">Matriz</a> cuya funcion va a ser que sea heredada por
+las clases hijas ,y creamos dos clases
+hijas que van a ser: clase <a
+href="Matriz.html">Matriz</a> Densa ya implementada de la práctica anterior
+con las operaciones basicas
+correspondientes (+-*/) y clase <a
+href="Matriz.html">Matriz</a> Dispersa cuya madre va a ser la clase base <a
+href="Matriz.html">Matriz</a> y donde se van a redifinir los metodos de
+la
+clase madre.</p>
+
+<p>class <a href="Matriz.html">Matriz</a></p>
+
+<p>metodos abstractos</p>
+
+<p>end</p>
+
+<p>class <a href="MatrizDensa.html">MatrizDensa</a> &lt; <a
+href="Matriz.html">Matriz</a></p>
+
+<p>metodos</p>
+
+<p>end</p>
+
+<p>class <a href="MatrizDispersa.html">MatrizDispersa</a> &lt; <a
+href="Matriz.html">Matriz</a></p>
+
+<p>metodos</p>
+
+<p>end</p>
+
+<p>En dichas clases hijas se redefiniran los metodos para trabajar con el tipo
+de matrices indicado.</p>
+
+<h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>Add this line to your application&#39;s Gemfile:</p>
+
+<pre>gem &#39;GemaMatriz&#39;</pre>
+
+<p>And then execute:</p>
+
+<pre>$ bundle</pre>
+
+<p>Or install it yourself as:</p>
+
+<pre>$ gem install GemaMatriz</pre>
+
+<h2 id="label-Usage">Usage<span><a href="#label-Usage">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>TODO: Write usage instructions here</p>
+
+<h2 id="label-Contributing">Contributing<span><a href="#label-Contributing">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>1. Fork it
+2. Create your feature branch (<code>git checkout -b
+my-new-feature</code>)
+3. Commit your changes (<code>git commit -am
+&#39;Add some feature&#39;</code>)
+4. Push to the branch (<code>git push
+origin my-new-feature</code>)
+5. Create new Pull Request</p>
+<hr style="height: 1px">
+
+<p>Universidad de La Laguna<br>
+Escuela Técnica Superior de Ingeniería
+Informática<br>
+Lenguajes y Paradigmas de la Programación 2013-14</p>
+</div>
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
