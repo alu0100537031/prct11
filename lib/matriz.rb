@@ -183,12 +183,7 @@ class MatrizDispersa < Matriz
 	       if (mat[i][j].is_a?Fraccion)
 		 a = mat[i][j].num
 		 b = mat[i][j].denom
-	        @hash[psincero] = Rational(a,b)
-		#cad = " " 
-		#cad << "#{a}"
-		#cad << "/"
-		#cad << "#{b}" 
-		#@hash[psincero] = cad		
+	        @hash[psincero] = Rational(a,b)	
 	       else 
 		@hash[psincero] = mat[i][j]
 	       end
