@@ -82,7 +82,7 @@ require "./lib/matriz.rb"
                         res.to_s.should eq("  [ 2/3 7/4 -1/3 ]\n  [ 8/3 15/4 -1/3 ]\n  [ -1/4 7/4 8/3 ]\n ")
                   end
 		  
-		  it " multiplicar una matriz densa con otra matriz densa de racionales" do
+		  it " multiplicar una matriz densa de enteros con otra matriz densa de racionales" do
 		         mul = @m1densa*@m3densa
                         mul.to_s.should eq("  [ 1/1 3/4 1/1 ]\n  [ 7/3 7/4 7/3 ]\n  [ 17/12 5/4 5/3 ]\n ")
                   end
@@ -127,6 +127,12 @@ require "./lib/matriz.rb"
 			
                   end
 		  
+		  it " multiplicar una matriz dispersa de enteros con otra matriz densa de racionales" do
+		         mul = @m4dispersa*@m6dispersa
+                         mul.to_s.should eq("{\"[0][2]\"=>(1/1), \"[1][2]\"=>(5/3), \"[2][2]\"=>(2/3)}"
+)
+                  end
+		  
 		   it "calcular el maximo de una matriz Dispersa " do
 		      max = @m4dispersa.max
 		      max.should eq 5
@@ -157,6 +163,12 @@ require "./lib/matriz.rb"
 		        sum = @m3densa+@m5dispersa
                         sum.to_s.should eq("  [ 1/3 1/4 13/3 ]\n  [ 10/3 1/4 1/3 ]\n  [ 1/4 1/4 7/3 ]\n "
 )
+                  end
+		  
+		   it " producto de una matriz densa con una dispersa de enteros " do
+		        mul = @m2densa*@m5dispersa
+                        mul.to_s.should eq("  [ 30 0 38 ]\n  [ 66 0 66 ]\n  [ 9 0 16 ]\n ")
+
                   end
 		  
 		  
