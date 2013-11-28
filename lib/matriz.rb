@@ -150,8 +150,10 @@ class MatrizDensa < Matriz
   
   def min
       min=mat[0][0] # Minimo toma como valor inicial el primer elemento de la matriz
-      for i in 0...nfil do   
-         for j in 0...ncol do
+      #for i in 0...nfil do 
+        0.upto(nfil-1) do |i|  
+       #for j in 0...ncol do
+	  0.upto(ncol-1) do |j|
             if mat[i][j] < min
                min=mat[i][j]
             end
