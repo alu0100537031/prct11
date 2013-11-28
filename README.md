@@ -1,4 +1,4 @@
-Práctica de Laboratorio #9. Creacion De Una Gema
+Práctica de Laboratorio #11. RDoc y metodos de programacion funcional
 ================
 
 ## Componentes Del Grupo:
