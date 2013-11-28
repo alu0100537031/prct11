@@ -67,9 +67,11 @@ class MatrizDensa < Matriz
 # metodo que imprime por pantalla la matriz
   def to_s
      cad = " "
-    for i in 0...nfil
+    #for i in 0...nfil
+     nfil.times do |i| # nfil indica el numero de veces que se va a iterar 
       cad << " [ "
-      for j in 0...ncol
+      #for j in 0...ncol
+      ncol.times do |j| # ncol indica el numero de veces que se va a iterar
 	cad <<  "#{mat[i][j]} "
       end
       cad << "]"
