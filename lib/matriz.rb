@@ -205,13 +205,15 @@ class MatrizDispersa < Matriz
  # metodo que imprime por pantalla el hash
  
   def to_s
-    if (hash.values != nil)
-      cad = ""
-      cad << "#{hash}"
-      return cad 
-    else
-      return 0
-    end 
+    hash.size.times do |i|
+        if (hash.values[i] != nil)
+          cad = ""
+          cad << "#{hash}"
+          return cad 
+        else
+          return 0
+        end
+      end
   end 
 
   # metodo que suma dos matrices (Sobrecarga del operador +)
