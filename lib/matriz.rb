@@ -134,8 +134,10 @@ class MatrizDensa < Matriz
   
   def max
     max=mat[0][0] # Maximo toma como valor inicial el primer elemento de la matriz	
-      for i in 0...nfil do   
-         for j in 0...ncol do
+      #for i in 0...nfil do 
+        0.upto(nfil-1) do |i|
+         #for j in 0...ncol do
+	  0.upto(ncol-1) do |j|
             if mat[i][j] > max
                max=mat[i][j]
             end
