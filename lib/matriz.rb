@@ -251,6 +251,47 @@ class MatrizDispersa < Matriz
        end
       
   end
+  
+ # metodo que calcula el producto de dos matrices (Sobrecarga del operador *) 
+  
+   def *(other)
+     case other
+      when MatrizDensa
+         other.*(self)
+      when MatrizDispersa
+	 sum=0;
+         elemento = Hash.new {}
+         mult=0
+         self.nfil.times do |i|
+            other.ncol.times do |j|
+            acumulado = 0
+            self.ncol.times do |k|
+               if ((self.hash.key?("[#{i}][#{k}]")) && (other.hash.key?("[#{k}][#{j}]"))) # compruebas si las posiciones de las claves tienen algun valor no nulo
+                        mult= self.hash["[#{i}][#{k}]"] * other.hash["[#{k}][#{j}]"]
+               else
+         #sumarle 0 al acumulado
+                 if (self.hash.key?("[#{i}][#{k}]") == false ) #  si la clave del primer elemento a sumar tiene valor nulo 
+                  mult=0
+                 else
+		 if (self.hash.key?("[#{k}][#{j}]") == false ) # si la clave del segundo elemento a sumar tiene valor nulo
+                  mult=0
+                 end
+		 end
+         end
+         acumulado = acumulado +mult
+            end
+         pos="[#{i}][#{j}]"
+         if (acumulado!=0)
+         elemento[pos] = acumulado #se queda con el ultimo valor
+         else
+         end
+         end
+      end
+      return(elemento)
+      else
+	  raise TypeError, "La matriz no es dispersa ni densa " unless other.instance_of? MatrizDispersa
+      end
+   end   
  
  # metodo que calcula el mayor elemento de la matriz
   
