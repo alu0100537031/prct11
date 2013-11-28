@@ -67,10 +67,8 @@ class MatrizDensa < Matriz
 # metodo que imprime por pantalla la matriz
   def to_s
      cad = " "
-    #for i in 0...nfil
      nfil.times do |i| # nfil indica el numero de veces que se va a iterar 
       cad << " [ "
-      #for j in 0...ncol
       ncol.times do |j| # ncol indica el numero de veces que se va a iterar
 	cad <<  "#{mat[i][j]} "
       end
@@ -85,9 +83,7 @@ class MatrizDensa < Matriz
    def +(other)
       raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
       m = Array.new(@nfil){Array.new(@ncol){0}}
-      #for i in 0...nfil 
       nfil.times do |i|
-         #for j in 0...ncol
 	 ncol.times do |j|
              m[i][j] = self.mat[i][j]+ other.mat[i][j]
          end
@@ -100,9 +96,7 @@ class MatrizDensa < Matriz
    def -(other)
       raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
       m = Array.new(@nfil){Array.new(@ncol){0}}
-      #for i in 0...nfil 
       nfil.times do |i|
-        #for j in 0...ncol
 	ncol.times do |j|
 	     m[i][j] = mat[i][j]- other.mat[i][j]
          end
@@ -117,11 +111,8 @@ class MatrizDensa < Matriz
   # Han de coincidir el numero de columnas de una con el numero de filas de la otra
     raise ArgumentError , 'Las matrices no se pueden multiplicar debido a sus dimensiones (A.col == B.fil)' unless @ncol == other.nfil
     m = Array.new(@nfil){Array.new(@ncol){0}}
-    #for i in 0...nfil do
     nfil.times do |i|
-      #for j in 0...other.ncol do
       other.ncol.times do |j|
-        #for k in 0...ncol do
 	ncol.times do |k|
           m[i][j] = m[i][j] + self.mat[i][k] * other.mat[k][j]
          end
@@ -134,15 +125,11 @@ class MatrizDensa < Matriz
   
   def max
     max=mat[0][0] # Maximo toma como valor inicial el primer elemento de la matriz	
-      #for i in 0...nfil do 
         0.upto(nfil-1) do |i|
-         #for j in 0...ncol do
-	  0.upto(ncol-1) do |j|
-            if mat[i][j] > max
-               max=mat[i][j]
-            end
-          end
-      end			  	
+	  @mat[i].inject(max) do |aux , j| # j recorre la matriz 
+                     aux > j ? max : max = j
+                     end
+          end 				  	
     return max  
   end
   
@@ -150,22 +137,18 @@ class MatrizDensa < Matriz
   
   def min
       min=mat[0][0] # Minimo toma como valor inicial el primer elemento de la matriz
-      #for i in 0...nfil do 
         0.upto(nfil-1) do |i|  
-       #for j in 0...ncol do
-	  0.upto(ncol-1) do |j|
-            if mat[i][j] < min
-               min=mat[i][j]
-            end
-          end
-      end			  	 
+	 @mat[i].inject(min) do |aux , j| # j recorre la matriz 
+                     aux < j ? min : min = j
+                     end
+          end  			  	 
       return min  
   end
 end	  
 
 
       
-# ==Clase MatrizDispersa
+# ===Clase MatrizDispersa
 #
 #   Es la otra clase hija de la clase base matriz ,en donde el 60 % de elementos de la matriz son nulos.
 #   Para ello utilizamos un hash en donde almacenamos los elementos no nulos. Al igual que la matriz densa tambien
@@ -340,7 +323,8 @@ puts " El valor minimo de la matriz M2(densa) es  #{m2.min}"
 puts " El valor maximo de la matriz M4(dispersa) es  #{m4.max}"
 puts " El valor minimo de la matriz M4(dispersa) es  #{m4.min}"
 =end
-#puts " El valor maximo de la matriz M4(dispersa) es  #{m4.max}"
+
+
 
 
 
