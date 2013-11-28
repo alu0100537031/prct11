@@ -228,8 +228,8 @@ elementos no nulos</p>
    <span class="ruby-identifier">nelementos</span>= (<span class="ruby-identifier">nfil</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">ncol</span>)<span class="ruby-operator">*</span><span class="ruby-value">0.6</span> <span class="ruby-comment"># elementos de la matriz aplicado el 60 % </span>
    <span class="ruby-identifier">psincero</span> = <span class="ruby-value">0</span> <span class="ruby-comment"># posiciones de los elementos de la matriz cuyo valor no es nulo (0)</span>
    <span class="ruby-ivar">@hash</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>)
-   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">nfil</span> <span class="ruby-keyword">do</span>
-      <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">ncol</span> <span class="ruby-keyword">do</span>
+   <span class="ruby-identifier">nfil</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">ncol</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
           <span class="ruby-keyword">if</span> (<span class="ruby-identifier">mat</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>]<span class="ruby-operator">==</span><span class="ruby-value">0</span>)  
               <span class="ruby-identifier">nceros</span>=<span class="ruby-identifier">nceros</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
            <span class="ruby-keyword">else</span>
@@ -290,7 +290,7 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="2B-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 220</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 221</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">+</span>(<span class="ruby-identifier">other</span>)
     
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">other</span>
@@ -336,7 +336,7 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="2D-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 239</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 240</span>
  <span class="ruby-keyword">def</span> <span class="ruby-operator">-</span>(<span class="ruby-identifier">other</span>)
      <span class="ruby-keyword">case</span> <span class="ruby-identifier">other</span>
         <span class="ruby-keyword">when</span> <span class="ruby-constant">MatrizDensa</span>
@@ -380,10 +380,10 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="max-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 256</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 257</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">max</span>
   <span class="ruby-identifier">max</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>] <span class="ruby-comment"># max toma el primer valor del hash</span>
-  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">clave</span>,<span class="ruby-identifier">valor</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">clave</span>,<span class="ruby-identifier">valor</span><span class="ruby-operator">|</span> <span class="ruby-comment"># collect recorre cada elemento y devuelve un array con los resultados del bloque</span>
         <span class="ruby-keyword">if</span> (<span class="ruby-identifier">valor</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max</span>)
            <span class="ruby-identifier">max</span>=<span class="ruby-identifier">valor</span>
         <span class="ruby-keyword">end</span>
@@ -419,10 +419,10 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="min-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 268</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 271</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">min</span>
   <span class="ruby-identifier">min</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>] <span class="ruby-comment"># min toma el primer valor del hash    </span>
-  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">clave</span>,<span class="ruby-identifier">valor</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">clave</span>,<span class="ruby-identifier">valor</span><span class="ruby-operator">|</span> <span class="ruby-comment"># map recorre cada elemento y devuelve un array con los resultados del bloque</span>
         <span class="ruby-keyword">if</span> (<span class="ruby-identifier">valor</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">min</span>)
           <span class="ruby-identifier">min</span>=<span class="ruby-identifier">valor</span> 
         <span class="ruby-keyword">end</span>
@@ -460,14 +460,15 @@ elementos no nulos</p>
           <div class="method-source-code" id="to_s-source">
             <pre><span class="ruby-comment"># File lib/matriz.rb, line 207</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
-  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
-    <span class="ruby-identifier">cad</span> = <span class="ruby-string">&quot;&quot;</span>
-    <span class="ruby-identifier">cad</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{hash}&quot;</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">cad</span> 
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
-  <span class="ruby-keyword">end</span> 
-  <span class="ruby-comment">#return hash</span>
+  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+        <span class="ruby-identifier">cad</span> = <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-identifier">cad</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{hash}&quot;</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">cad</span> 
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- to_s-source -->
           
@@ -488,7 +489,7 @@ elementos no nulos</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

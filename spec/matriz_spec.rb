@@ -15,6 +15,7 @@ require "./lib/matriz.rb"
                 end
                
 		describe "Se comprueba el numero de:" do
+		  
                         it "filas de la matriz" do
                                 @m1.nfil.should eq(3)  
                         end
@@ -26,6 +27,7 @@ require "./lib/matriz.rb"
        
 		
 		describe "se debe comprobar si la " do
+		  
                   it " matriz es densa" do
                         (@m1densa.instance_of? MatrizDensa).should be_true 
                   end
@@ -144,13 +146,19 @@ require "./lib/matriz.rb"
 		   it " sumar una matriz densa con una dispersa " do
 		        sum = @m1densa+@m5dispersa
                         sum.to_s.should eq("  [ 1 2 4 ]\n  [ 6 4 0 ]\n  [ 0 2 5 ]\n ")
-
-
                   end
+		  
                   it " restar una matriz dispersa con una densa" do
 		        res = @m5dispersa-@m1densa
                         res.to_s.should eq("  [ 1 2 -4 ]\n  [ 0 4 0 ]\n  [ 0 2 1 ]\n ")
                   end
+		  
+		    it " sumar una matriz densa de racionales con una dispersa de enteros " do
+		        sum = @m3densa+@m5dispersa
+                        sum.to_s.should eq("  [ 1/3 1/4 13/3 ]\n  [ 10/3 1/4 1/3 ]\n  [ 1/4 1/4 7/3 ]\n "
+)
+                  end
+		  
 		  
 		end 
 				
