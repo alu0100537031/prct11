@@ -264,11 +264,13 @@ class MatrizDispersa < Matriz
    return max 
    end
    
+   
+   
  # metodo que calcula el menor elemento de la matriz
    
   def min
     min = hash.values[0] # min toma el primer valor del hash	
-    hash.each do |clave,valor|
+    hash.map do |clave,valor|
 	  if (valor < min)
 	    min=valor 
           end
