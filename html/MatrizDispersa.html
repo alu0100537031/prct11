@@ -75,6 +75,8 @@
     
     <li class="calls-super" ><a href="#method-c-new">::new</a>
     
+    <li ><a href="#method-i-2A">#*</a>
+    
     <li ><a href="#method-i-2B">#+</a>
     
     <li ><a href="#method-i-2D">#-</a>
@@ -271,6 +273,74 @@ elementos no nulos</p>
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-2A" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">*</span><span
+            class="method-args">(other)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>metodo que calcula el producto de dos matrices (Sobrecarga del operador *)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="2A-source">
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 257</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">*</span>(<span class="ruby-identifier">other</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">other</span>
+   <span class="ruby-keyword">when</span> <span class="ruby-constant">MatrizDensa</span>
+      <span class="ruby-identifier">other</span>.<span class="ruby-operator">*</span>(<span class="ruby-keyword">self</span>)
+   <span class="ruby-keyword">when</span> <span class="ruby-constant">MatrizDispersa</span>
+      <span class="ruby-identifier">sum</span>=<span class="ruby-value">0</span>;
+      <span class="ruby-identifier">elemento</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> {}
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">0</span>
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nfil</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+         <span class="ruby-identifier">other</span>.<span class="ruby-identifier">ncol</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+         <span class="ruby-identifier">acumulado</span> = <span class="ruby-value">0</span>
+         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ncol</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">if</span> ((<span class="ruby-keyword">self</span>.<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-node">&quot;[#{i}][#{k}]&quot;</span>)) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">other</span>.<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-node">&quot;[#{k}][#{j}]&quot;</span>))) <span class="ruby-comment"># compruebas si las posiciones de las claves tienen algun valor no nulo</span>
+                     <span class="ruby-identifier">mult</span>= <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hash</span>[<span class="ruby-node">&quot;[#{i}][#{k}]&quot;</span>] <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">hash</span>[<span class="ruby-node">&quot;[#{k}][#{j}]&quot;</span>]
+            <span class="ruby-keyword">else</span>
+      <span class="ruby-comment">#sumarle 0 al acumulado</span>
+              <span class="ruby-keyword">if</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-node">&quot;[#{i}][#{k}]&quot;</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> ) <span class="ruby-comment">#  si la clave del primer elemento a sumar tiene valor nulo </span>
+               <span class="ruby-identifier">mult</span>=<span class="ruby-value">0</span>
+              <span class="ruby-keyword">else</span>
+              <span class="ruby-keyword">if</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-node">&quot;[#{k}][#{j}]&quot;</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> ) <span class="ruby-comment"># si la clave del segundo elemento a sumar tiene valor nulo</span>
+               <span class="ruby-identifier">mult</span>=<span class="ruby-value">0</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">acumulado</span> = <span class="ruby-identifier">acumulado</span> <span class="ruby-operator">+</span><span class="ruby-identifier">mult</span>
+         <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">pos</span>=<span class="ruby-node">&quot;[#{i}][#{j}]&quot;</span>
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">acumulado!</span>=<span class="ruby-value">0</span>)
+      <span class="ruby-identifier">elemento</span>[<span class="ruby-identifier">pos</span>] = <span class="ruby-identifier">acumulado</span> <span class="ruby-comment">#se queda con el ultimo valor</span>
+      <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+   <span class="ruby-keyword">end</span>
+   <span class="ruby-keyword">return</span>(<span class="ruby-identifier">elemento</span>)
+   <span class="ruby-keyword">else</span>
+       <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-string">&quot;La matriz no es dispersa ni densa &quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">MatrizDispersa</span>
+   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- 2A-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- 2A-method -->
+
+    
       <div id="method-i-2B" class="method-detail ">
         
         <div class="method-heading">
@@ -380,7 +450,7 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="max-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 257</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 298</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">max</span>
   <span class="ruby-identifier">max</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>] <span class="ruby-comment"># max toma el primer valor del hash</span>
   <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">clave</span>,<span class="ruby-identifier">valor</span><span class="ruby-operator">|</span> <span class="ruby-comment"># collect recorre cada elemento y devuelve un array con los resultados del bloque</span>
@@ -419,7 +489,7 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="min-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 271</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 312</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">min</span>
   <span class="ruby-identifier">min</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>] <span class="ruby-comment"># min toma el primer valor del hash    </span>
   <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">clave</span>,<span class="ruby-identifier">valor</span><span class="ruby-operator">|</span> <span class="ruby-comment"># map recorre cada elemento y devuelve un array con los resultados del bloque</span>
