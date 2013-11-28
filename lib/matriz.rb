@@ -256,7 +256,7 @@ class MatrizDispersa < Matriz
   
   def max
     max = hash.values[0] # max toma el primer valor del hash
-    hash.each do |clave,valor| # collect recorre cada elemento y devuelve un array con los resultados del bloque
+    hash.collect do |clave,valor| # collect recorre cada elemento y devuelve un array con los resultados del bloque
 	  if (valor > max)
 	     max=valor
           end
