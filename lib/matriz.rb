@@ -174,8 +174,8 @@ class MatrizDispersa < Matriz
     nelementos= (nfil * ncol)*0.6 # elementos de la matriz aplicado el 60 % 
     psincero = 0 # posiciones de los elementos de la matriz cuyo valor no es nulo (0)
     @hash = Hash.new(0)
-    for i in 0...nfil do
-       for j in 0...ncol do
+    nfil.times do |i|
+       ncol.times do |j|
            if (mat[i][j]==0)  
                nceros=nceros+1
             else
@@ -212,7 +212,6 @@ class MatrizDispersa < Matriz
     else
       return 0
     end 
-    #return hash
   end 
 
   # metodo que suma dos matrices (Sobrecarga del operador +)
