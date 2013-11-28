@@ -256,7 +256,7 @@ class MatrizDispersa < Matriz
   
   def max
     max = hash.values[0] # max toma el primer valor del hash
-    hash.each do |clave,valor|
+    hash.each do |clave,valor| # collect recorre cada elemento y devuelve un array con los resultados del bloque
 	  if (valor > max)
 	     max=valor
           end
@@ -270,7 +270,7 @@ class MatrizDispersa < Matriz
    
   def min
     min = hash.values[0] # min toma el primer valor del hash	
-    hash.map do |clave,valor|
+    hash.map do |clave,valor| # map recorre cada elemento y devuelve un array con los resultados del bloque
 	  if (valor < min)
 	    min=valor 
           end
