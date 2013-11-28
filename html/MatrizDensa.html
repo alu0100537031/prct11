@@ -255,9 +255,9 @@ Los métodos que forman dicha clase son :
 <span class="ruby-comment"># Han de coincidir el numero de columnas de una con el numero de filas de la otra</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span> , <span class="ruby-string">&#39;Las matrices no se pueden multiplicar debido a sus dimensiones (A.col == B.fil)&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@ncol</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">nfil</span>
   <span class="ruby-identifier">m</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@nfil</span>){<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@ncol</span>){<span class="ruby-value">0</span>}}
-  <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">nfil</span> <span class="ruby-keyword">do</span>
-    <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">other</span>.<span class="ruby-identifier">ncol</span> <span class="ruby-keyword">do</span>  
-      <span class="ruby-keyword">for</span> <span class="ruby-identifier">k</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">ncol</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">nfil</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">other</span>.<span class="ruby-identifier">ncol</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">ncol</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">m</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] = <span class="ruby-identifier">m</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] <span class="ruby-operator">+</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">mat</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">k</span>] <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">mat</span>[<span class="ruby-identifier">k</span>][<span class="ruby-identifier">j</span>]
        <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
@@ -297,8 +297,8 @@ Los métodos que forman dicha clase son :
 <span class="ruby-keyword">def</span> <span class="ruby-operator">+</span>(<span class="ruby-identifier">other</span>)
    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;Las matrices no son cuadradas.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@nfil</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">nfil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@ncol</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">ncol</span>
    <span class="ruby-identifier">m</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@nfil</span>){<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@ncol</span>){<span class="ruby-value">0</span>}}
-   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">nfil</span> 
-      <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">ncol</span>
+   <span class="ruby-identifier">nfil</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">ncol</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">m</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">mat</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>]<span class="ruby-operator">+</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">mat</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>]
       <span class="ruby-keyword">end</span>
    <span class="ruby-keyword">end</span>
@@ -337,8 +337,8 @@ Los métodos que forman dicha clase son :
 <span class="ruby-keyword">def</span> <span class="ruby-operator">-</span>(<span class="ruby-identifier">other</span>)
    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;Las matrices no son cuadradas.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@nfil</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">nfil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@ncol</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">ncol</span>
    <span class="ruby-identifier">m</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@nfil</span>){<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@ncol</span>){<span class="ruby-value">0</span>}}
-   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">nfil</span> 
-      <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">ncol</span>
+   <span class="ruby-identifier">nfil</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+     <span class="ruby-identifier">ncol</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">m</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] = <span class="ruby-identifier">mat</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>]<span class="ruby-operator">-</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">mat</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>]
       <span class="ruby-keyword">end</span>
    <span class="ruby-keyword">end</span>
@@ -442,13 +442,11 @@ Los métodos que forman dicha clase son :
             <pre><span class="ruby-comment"># File lib/matriz.rb, line 126</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">max</span>
   <span class="ruby-identifier">max</span>=<span class="ruby-identifier">mat</span>[<span class="ruby-value">0</span>][<span class="ruby-value">0</span>] <span class="ruby-comment"># Maximo toma como valor inicial el primer elemento de la matriz      </span>
-    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">nfil</span> <span class="ruby-keyword">do</span>   
-       <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">ncol</span> <span class="ruby-keyword">do</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-identifier">mat</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max</span>
-             <span class="ruby-identifier">max</span>=<span class="ruby-identifier">mat</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>]
-          <span class="ruby-keyword">end</span>
-        <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>                           
+      <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">nfil</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@mat</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">inject</span>(<span class="ruby-identifier">max</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">aux</span> , <span class="ruby-identifier">j</span><span class="ruby-operator">|</span> <span class="ruby-comment"># j recorre la matriz </span>
+                   <span class="ruby-identifier">aux</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">max</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">max</span> = <span class="ruby-identifier">j</span>
+                   <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>                                 
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">max</span>  
 <span class="ruby-keyword">end</span></pre>
           </div><!-- max-source -->
@@ -480,16 +478,14 @@ Los métodos que forman dicha clase son :
 
           
           <div class="method-source-code" id="min-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 140</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">min</span>
     <span class="ruby-identifier">min</span>=<span class="ruby-identifier">mat</span>[<span class="ruby-value">0</span>][<span class="ruby-value">0</span>] <span class="ruby-comment"># Minimo toma como valor inicial el primer elemento de la matriz</span>
-    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">nfil</span> <span class="ruby-keyword">do</span>   
-       <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">ncol</span> <span class="ruby-keyword">do</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-identifier">mat</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">min</span>
-             <span class="ruby-identifier">min</span>=<span class="ruby-identifier">mat</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>]
-          <span class="ruby-keyword">end</span>
-        <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>                            
+      <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">nfil</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>  
+       <span class="ruby-ivar">@mat</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">inject</span>(<span class="ruby-identifier">min</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">aux</span> , <span class="ruby-identifier">j</span><span class="ruby-operator">|</span> <span class="ruby-comment"># j recorre la matriz </span>
+                   <span class="ruby-identifier">aux</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">min</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">min</span> = <span class="ruby-identifier">j</span>
+                   <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>                          
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">min</span>  
 <span class="ruby-keyword">end</span></pre>
           </div><!-- min-source -->
@@ -524,9 +520,9 @@ Los métodos que forman dicha clase son :
             <pre><span class="ruby-comment"># File lib/matriz.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
    <span class="ruby-identifier">cad</span> = <span class="ruby-string">&quot; &quot;</span>
-  <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">nfil</span>
+   <span class="ruby-identifier">nfil</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-comment"># nfil indica el numero de veces que se va a iterar </span>
     <span class="ruby-identifier">cad</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot; [ &quot;</span>
-    <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">ncol</span>
+    <span class="ruby-identifier">ncol</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span> <span class="ruby-comment"># ncol indica el numero de veces que se va a iterar</span>
       <span class="ruby-identifier">cad</span> <span class="ruby-operator">&lt;&lt;</span>  <span class="ruby-node">&quot;#{mat[i][j]} &quot;</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">cad</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;]&quot;</span>
@@ -553,7 +549,7 @@ Los métodos que forman dicha clase son :
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

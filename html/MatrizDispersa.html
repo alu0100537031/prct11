@@ -129,7 +129,7 @@
 
   <div id="description" class="description">
     
-<h2 id="label-Clase+MatrizDispersa">Clase <a href="MatrizDispersa.html">MatrizDispersa</a><span><a href="#label-Clase+MatrizDispersa">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h3 id="label-Clase+MatrizDispersa">Clase <a href="MatrizDispersa.html">MatrizDispersa</a><span><a href="#label-Clase+MatrizDispersa">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <pre>Es la otra clase hija de la clase base matriz ,en donde el 60 % de elementos de la matriz son nulos.
 Para ello utilizamos un hash en donde almacenamos los elementos no nulos. Al igual que la matriz densa tambien
@@ -220,7 +220,7 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 174</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 170</span>
  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> (<span class="ruby-identifier">nfil</span>, <span class="ruby-identifier">ncol</span>, <span class="ruby-identifier">mat</span>)
    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">nfil</span>, <span class="ruby-identifier">ncol</span>)
    <span class="ruby-ivar">@mat</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">mat</span>)       
@@ -290,7 +290,7 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="2B-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 224</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 220</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">+</span>(<span class="ruby-identifier">other</span>)
     
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">other</span>
@@ -336,7 +336,7 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="2D-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 243</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 239</span>
  <span class="ruby-keyword">def</span> <span class="ruby-operator">-</span>(<span class="ruby-identifier">other</span>)
      <span class="ruby-keyword">case</span> <span class="ruby-identifier">other</span>
         <span class="ruby-keyword">when</span> <span class="ruby-constant">MatrizDensa</span>
@@ -380,7 +380,7 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="max-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 260</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 256</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">max</span>
   <span class="ruby-identifier">max</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>] <span class="ruby-comment"># max toma el primer valor del hash</span>
   <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">clave</span>,<span class="ruby-identifier">valor</span><span class="ruby-operator">|</span>
@@ -419,7 +419,7 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="min-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 272</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 268</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">min</span>
   <span class="ruby-identifier">min</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>] <span class="ruby-comment"># min toma el primer valor del hash    </span>
   <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">clave</span>,<span class="ruby-identifier">valor</span><span class="ruby-operator">|</span>
@@ -458,7 +458,7 @@ elementos no nulos</p>
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/matriz.rb, line 211</span>
+            <pre><span class="ruby-comment"># File lib/matriz.rb, line 207</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
     <span class="ruby-identifier">cad</span> = <span class="ruby-string">&quot;&quot;</span>
@@ -488,7 +488,7 @@ elementos no nulos</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 
