@@ -85,8 +85,10 @@ class MatrizDensa < Matriz
    def +(other)
       raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
       m = Array.new(@nfil){Array.new(@ncol){0}}
-      for i in 0...nfil 
-         for j in 0...ncol
+      #for i in 0...nfil 
+      nfil.times do |i|
+         #for j in 0...ncol
+	 ncol.times do |j|
              m[i][j] = self.mat[i][j]+ other.mat[i][j]
          end
       end
@@ -98,8 +100,10 @@ class MatrizDensa < Matriz
    def -(other)
       raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
       m = Array.new(@nfil){Array.new(@ncol){0}}
-      for i in 0...nfil 
-         for j in 0...ncol
+      #for i in 0...nfil 
+      nfil.times do |i|
+        #for j in 0...ncol
+	ncol.times do |j|
 	     m[i][j] = mat[i][j]- other.mat[i][j]
          end
       end
@@ -113,9 +117,12 @@ class MatrizDensa < Matriz
   # Han de coincidir el numero de columnas de una con el numero de filas de la otra
     raise ArgumentError , 'Las matrices no se pueden multiplicar debido a sus dimensiones (A.col == B.fil)' unless @ncol == other.nfil
     m = Array.new(@nfil){Array.new(@ncol){0}}
-    for i in 0...nfil do
-      for j in 0...other.ncol do  
-        for k in 0...ncol do
+    #for i in 0...nfil do
+    nfil.times do |i|
+      #for j in 0...other.ncol do
+      other.ncol.times do |j|
+        #for k in 0...ncol do
+	ncol.times do |k|
           m[i][j] = m[i][j] + self.mat[i][k] * other.mat[k][j]
          end
       end
